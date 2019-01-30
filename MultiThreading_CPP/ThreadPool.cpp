@@ -1,14 +1,14 @@
 #include "ThreadPool.h"
 
-
-
 ThreadPool::ThreadPool(int threadCount)
 {
+	// Initialise variables
 	isCompleted = false;
 	isStopped = false;
 	nIdle = 0;
 	myQueue = std::make_unique<TaskQueue>();
 
+	// Instantiate threads and their flags
 	if (threadCount > 0)
 	{
 		resize(threadCount);
@@ -21,6 +21,7 @@ int ThreadPool::size()
 	return Threads.size();
 }
 
+// Returns the size of the taskQueue
 int ThreadPool::qSize()
 {
 	return myQueue->size();
